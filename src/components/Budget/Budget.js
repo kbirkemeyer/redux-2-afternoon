@@ -8,13 +8,15 @@ import Loading from './../shared/Loading/Loading';
 import Nav from './../shared/Nav';
 import './Budget.css';
 import {connect} from 'react-redux';
-import requestUserData from '../../redux/userReducer';
+import {requestUserData} from '../../redux/userReducer';
+import {requestBudgetData} from '../../redux/budgetReducer';
 
 
 class Budget extends Component {
 
   componentDidMount() {
     this.props.requestUserData();
+    this.props.requestBudgetData();
   }
 
   render() {
@@ -48,4 +50,4 @@ function mapStateToProps (state) {
   }
 };
 
-export default connect(mapStateToProps, {requestUserData})(Budget);
+export default connect(mapStateToProps, {requestUserData, requestBudgetData})(Budget);

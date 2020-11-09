@@ -8,7 +8,7 @@ const initialState = {
 
 const REQUEST_USER_DATA = "REQUEST_USER_DATA";
 
-function requestUserData() {
+export function requestUserData() {
     let data = axios.get('/auth/user-data').then(res => res.data)
     return {
         type: REQUEST_USER_DATA,
@@ -23,5 +23,5 @@ export default function reducer (state = initialState, action) {
             return {email, firstName, lastName};
         default:
             return state;
-    }
+    };
 };
