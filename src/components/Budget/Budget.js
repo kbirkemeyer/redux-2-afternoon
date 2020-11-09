@@ -9,7 +9,7 @@ import Nav from './../shared/Nav';
 import './Budget.css';
 import {connect} from 'react-redux';
 import {requestUserData} from '../../redux/userReducer';
-import {requestBudgetData} from '../../redux/budgetReducer';
+import {requestBudgetData, addPurchase, removePurchase} from '../../redux/budgetReducer';
 
 
 class Budget extends Component {
@@ -29,8 +29,8 @@ class Budget extends Component {
           <Nav firstName={firstName} lastName={lastName}/>
           <div className='content-container'>
             <div className="purchases-container">
-              <AddPurchase />
-              <DisplayPurchases />
+              <AddPurchase addPurchase={this.props.addPurchase}/>
+              <DisplayPurchases removePurchase={this.props.removePurchase}/>
             </div>
             <div className='chart-container'>
               <Chart1 />
