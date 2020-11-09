@@ -23,5 +23,5 @@ export default function userReducer (state = initialState, action) {
             return {email, firstName, lastName};
         default:
             return state;
-    };
-};
+    }
+}

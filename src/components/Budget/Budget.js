@@ -20,21 +20,21 @@ class Budget extends Component {
   }
 
   render() {
-    const {loading} = this.props.budget;
+    const {loading, purchases} = this.props.budget;
     const {firstName, lastName} = this.props.user;
     return (
       <Background>
-        {true ? <Loading /> : null}
+        {loading ? <Loading /> : null}
         <div className='budget-container'>
           <Nav firstName={firstName} lastName={lastName}/>
           <div className='content-container'>
             <div className="purchases-container">
               <AddPurchase addPurchase={this.props.addPurchase}/>
-              <DisplayPurchases removePurchase={this.props.removePurchase}/>
+              <DisplayPurchases purchases={purchases} removePurchase={this.props.removePurchase}/>
             </div>
             <div className='chart-container'>
-              <Chart1 />
-              <Chart2 />
+              <Chart1 purchases={purchases}/>
+              <Chart2 purchases={purchases}/>
             </div>
           </div>
         </div>
@@ -50,4 +50,4 @@ function mapStateToProps (state) {
   }
 };
 
-export default connect(mapStateToProps, {requestUserData, requestBudgetData})(Budget);
+export default connect(mapStateToProps, {requestUserData, requestBudgetData, addPurchase, removePurchase})(Budget);

@@ -6,7 +6,7 @@ import userReducer from '../redux/userReducer';
 const rootReducer = combineReducers({
     budget: budgetReducer,
     user: userReducer
-  });
+});
 
 
 export default createStore(rootReducer, applyMiddleware(promiseMiddleware));
